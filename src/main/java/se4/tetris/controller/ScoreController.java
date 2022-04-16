@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import se4.tetris.dto.ResponseDTO;
+import se4.tetris.dto.response.ItemTopTen;
 import se4.tetris.dto.response.NormalTopTen;
 import se4.tetris.service.ScoreService;
 
@@ -29,6 +30,20 @@ public class ScoreController {
                         .status(200)
                         .message("일반모드 스코어보드")
                         .data(normalTopTen)
+                        .build()
+        );
+    }
+
+    @GetMapping("/item/score")
+    public ResponseEntity<ResponseDTO> getItemScore() {
+
+        List<ItemTopTen> itemTopTen = scoreService.getItemScore();
+
+        return ResponseEntity.status(HttpStatus.OK).body(
+                ResponseDTO.builder()
+                        .status(200)
+                        .message("아이템모드 스코어보드")
+                        .data(itemTopTen)
                         .build()
         );
     }
