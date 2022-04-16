@@ -57,4 +57,13 @@ public class ScoreService {
 
         normalRepository.save(normal);
     }
+
+    public void addItem(String name, int score) {
+        Item item = Item.builder()
+                .name(name)
+                .score(score)
+                .build();
+
+        itemRepository.save(item);
+    }
 }
