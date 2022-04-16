@@ -48,4 +48,13 @@ public class ScoreService {
 
         return itemTopTenList;
     }
+
+    public void addNormal(String name, int score) {
+        Normal normal = Normal.builder()
+                .name(name)
+                .score(score)
+                .build();
+
+        normalRepository.save(normal);
+    }
 }
