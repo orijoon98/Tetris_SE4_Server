@@ -75,4 +75,18 @@ public class ScoreController {
                         .build()
         );
     }
+
+    @DeleteMapping("/reset")
+    public ResponseEntity<ResponseDTO> reset() {
+
+        scoreService.reset();
+
+        return ResponseEntity.status(HttpStatus.OK).body(
+                ResponseDTO.builder()
+                        .status(200)
+                        .message("스코어보드 초기화 성공")
+                        .data(null)
+                        .build()
+        );
+    }
 }

@@ -66,4 +66,9 @@ public class ScoreService {
 
         itemRepository.save(item);
     }
+
+    public void reset() {
+        normalRepository.deleteAll();
+        itemRepository.deleteAll();
+    }
 }
